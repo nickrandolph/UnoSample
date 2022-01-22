@@ -13,7 +13,7 @@ resources:
       
 stages:
 
-- template:  azure/stages/build-and-deploy-uno.yml
+- template:  azure/stages/build-and-deploy-uno.yml@builttoroam_templates
   parameters:
     name: 'Build_Solution'
     solution_filename: 'UnoSample.sln'
