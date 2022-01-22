@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+    - '*'
+
+resources:
+  repositories:
+    - repository: builttoroam_templates
+      type: github
+      name: builttoroam/pipeline_templates
+      ref: refs/tags/v0.8.0
+      endpoint: github_connection
+      
+stages:
+
+- template:  azure/stages/build-and-deploy-uno.yml@builttoroam_templates
+  parameters:
+    name: 'Build_Solution'
+    solution_filename: 'UnoSample.sln'
+    full_version_number: '$(version_prefix).$(Build.BuildId)'
+    solution_build_enabled: true
